@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tobjoh&#39;s codeblog</title>
+    <link>http://tobias-johansson.github.io/</link>
+    <description>Recent content on tobjoh&#39;s codeblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Mar 2015 22:14:51 +0200</lastBuildDate>
+    <atom:link href="http://tobias-johansson.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Finding files in git log</title>
+      <link>http://tobias-johansson.github.io/post/finding-files-in-git-log/</link>
+      <pubDate>Thu, 12 Mar 2015 22:14:51 +0200</pubDate>
+      
+      <guid>http://tobias-johansson.github.io/post/finding-files-in-git-log/</guid>
+      <description>&lt;p&gt;Show all git log entries that concern a certain (existing or non-existing) file path:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git log --all -- &amp;lt;path&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;path&lt;/code&gt; is a git &lt;code&gt;pathspec&lt;/code&gt; that can contain &lt;code&gt;*&lt;/code&gt;s and &lt;code&gt;?&lt;/code&gt;s (&lt;a href=&#34;http://git-scm.com/docs/gitglossary&#34;&gt;more info here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Add a modifier like &lt;code&gt;--stat&lt;/code&gt;, &lt;code&gt;--name-status&lt;/code&gt; or &lt;code&gt;--name-only&lt;/code&gt; for more informative output&lt;/p&gt;
+
+&lt;p&gt;Example: Finding when that folder was deleted in order to restore it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git log --all --name-status  -- &#39;src/test/scala/se/appland/somefolder*&#39;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android WebView Cookies</title>
+      <link>http://tobias-johansson.github.io/post/android-webview-cookies/</link>
+      <pubDate>Mon, 09 Mar 2015 10:16:55 +0200</pubDate>
+      
+      <guid>http://tobias-johansson.github.io/post/android-webview-cookies/</guid>
+      <description>&lt;p&gt;Had some cookie problems when loading raw content in an Android WebView:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uncaught SecurityError: Failed to read the &#39;cookie&#39; property from &#39;Document&#39;: Cookies are disabled inside &#39;data:&#39; URLs.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It seems that&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;WebView webView = new WebView(activity);
+webView.loadData(htmlString, &amp;quot;text/html&amp;quot;, null);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puts us at a &amp;lsquo;data:&amp;rsquo; url (which makes sense), where cookies are blocked.&lt;/p&gt;
+
+&lt;p&gt;We need to enable cookies and also forcibly set the url to something else, like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;CookieManager.getInstance().setAcceptCookie(true);
+WebView webView = new WebView(activity);
+webView.loadDataWithBaseURL(&amp;quot;http://localhost/&amp;quot;, htmlString, &amp;quot;text/html&amp;quot;, &amp;quot;utf-8&amp;quot;, null);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
