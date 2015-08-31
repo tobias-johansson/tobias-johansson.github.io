@@ -60,6 +60,37 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">31 Aug 2015, 15:53</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://tobias-johansson.github.io/post/android-remove-intent-filter/" class="post-title">Removing an intent-filter using the Android Manifest Merger</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>Needed to remove an <code>intent-filter</code> for an activity that was defined in a library. This can be done by instructing the <a href="http://tools.android.com/tech-docs/new-build-system/user-guide/manifest-merger">Android Manifest Merger</a> with a <code>tools:node=&quot;remove&quot;</code> on the <code>intent-filter</code> tag.</p>
+
+<p>To identify a specific <code>intent-filter</code> tag (there can be many), the merger uses the combination of <code>android:name</code> attributes from the child <code>action</code> and <code>category</code> tags.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-xml">&lt;activity
+  android:name=&quot;.SomeActivity&quot;&gt;
+  &lt;intent-filter tools:node=&quot;remove&quot;&gt;
+    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+  &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">12 Mar 2015, 22:14</h1>
                 <section class="post">
                     <header class="post-header">

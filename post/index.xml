@@ -6,8 +6,31 @@
     <description>Recent content in Posts on tobjoh&#39;s codeblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Mar 2015 22:14:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2015 15:53:57 +0200</lastBuildDate>
     <atom:link href="http://tobias-johansson.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Removing an intent-filter using the Android Manifest Merger</title>
+      <link>http://tobias-johansson.github.io/post/android-remove-intent-filter/</link>
+      <pubDate>Mon, 31 Aug 2015 15:53:57 +0200</pubDate>
+      
+      <guid>http://tobias-johansson.github.io/post/android-remove-intent-filter/</guid>
+      <description>&lt;p&gt;Needed to remove an &lt;code&gt;intent-filter&lt;/code&gt; for an activity that was defined in a library. This can be done by instructing the &lt;a href=&#34;http://tools.android.com/tech-docs/new-build-system/user-guide/manifest-merger&#34;&gt;Android Manifest Merger&lt;/a&gt; with a &lt;code&gt;tools:node=&amp;quot;remove&amp;quot;&lt;/code&gt; on the &lt;code&gt;intent-filter&lt;/code&gt; tag.&lt;/p&gt;
+
+&lt;p&gt;To identify a specific &lt;code&gt;intent-filter&lt;/code&gt; tag (there can be many), the merger uses the combination of &lt;code&gt;android:name&lt;/code&gt; attributes from the child &lt;code&gt;action&lt;/code&gt; and &lt;code&gt;category&lt;/code&gt; tags.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;activity
+  android:name=&amp;quot;.SomeActivity&amp;quot;&amp;gt;
+  &amp;lt;intent-filter tools:node=&amp;quot;remove&amp;quot;&amp;gt;
+    &amp;lt;action android:name=&amp;quot;android.intent.action.MAIN&amp;quot; /&amp;gt;
+    &amp;lt;category android:name=&amp;quot;android.intent.category.LAUNCHER&amp;quot;/&amp;gt;
+  &amp;lt;/intent-filter&amp;gt;
+&amp;lt;/activity&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Finding files in git log</title>
